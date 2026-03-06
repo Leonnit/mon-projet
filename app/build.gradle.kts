@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.devtools.ksp")            // ← ajouter
+    id("com.google.dagger.hilt.android")     // ← ajouter
 }
 
 android {
@@ -56,4 +58,22 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    // Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.room.compiler)
+
+    // Retrofit (API HTTP)
+    implementation(libs.retrofit)
+    //noinspection UseTomlInstead
+    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
+
+    // Hilt (injection de ascendance)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+
+    // ViewModel + Compose
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
 }
