@@ -2,8 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("com.google.devtools.ksp")            // ← ajouter
-    id("com.google.dagger.hilt.android")     // ← ajouter
 }
 
 android {
@@ -59,21 +57,18 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    // Room
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.room.compiler)
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-    // Retrofit (API HTTP)
-    implementation(libs.retrofit)
-    //noinspection UseTomlInstead
-    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
+    // Ajoute le pack d'icônes complet (DoneAll, Facebook, Share, etc.)
+    implementation("androidx.compose.material:material-icons-extended:1.7.6")
+    val navVersion = "2.9.6"
 
-    // Hilt (injection de ascendance)
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)
+    //noinspection GradleDependency,UseTomlInstead
+    implementation("androidx.navigation:navigation-compose:$navVersion")
+    implementation("io.coil-kt:coil-compose:2.6.0")
 
-    // ViewModel + Compose
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.hilt.navigation.compose)
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+
 }

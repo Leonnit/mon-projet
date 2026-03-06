@@ -10,13 +10,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun SettingScreen(navController: NavController) {
     Scaffold {
-        innerPadding ->
+            innerPadding ->
         Column(modifier = Modifier.padding((innerPadding))) {
-            Text("Hello Home")
-            Button(onClick = {navController.navigate("SettingScreen")} ) {
-                Text("nexte to Setting")
+            Text("Hello Setting")
+            Button(onClick = {navController.navigate("HomeScreen")} ) {
+                Text("back to Home")
             }
         }
     }
