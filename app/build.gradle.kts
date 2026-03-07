@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.ksp)
 }
 
 android {
@@ -63,19 +64,22 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
 
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    //dependecies pour la connexion http
+    implementation(libs.retrofit.v290)
+    implementation(libs.converter.gson)
 
     // Ajoute le pack d'icônes complet (DoneAll, Facebook, Share, etc.)
-    implementation("androidx.compose.material:material-icons-extended:1.7.6")
-    val navVersion = "2.9.6"
+    implementation(libs.androidx.compose.material.icons.extended)
 
-    //noinspection GradleDependency,UseTomlInstead
-    implementation("androidx.navigation:navigation-compose:$navVersion")
-    implementation("io.coil-kt:coil-compose:2.6.0")
+    //Dependance pour la navigation
+    implementation(libs.androidx.navigation.compose.v296)
+    implementation(libs.coil.compose)
 
-    implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.room:room-ktx:2.6.1")
+    // Dependance pour la base de données room db
+    implementation(libs.androidx.room.runtime.v261)
+    implementation(libs.androidx.room.ktx.v261)
+    implementation( libs.androidx.room.compiler.v261)
+    ksp(libs.androidx.room.room.compiler)
 
 
 }
